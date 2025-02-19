@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+    <properties>
+        <Property name="LOG_PATH">/data/logs</Property>
+        <Property name="LOG_EXTRA_PATH">/data/logs/extra</Property>
+
+        <!-- 项目统一日志输出格式-控制台 -->
+        <property name="LOG_PATTERN"
+                  value="[%date{yyyy-MM-dd HH:mm:ss.SSS}][%level][%X{trace_uuid}][%thread][%file:%line] %msg%n"/>
+    </properties>
+    <appenders>
+        <console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </console>
+        <RollingFile name="application_appender" immediateFlush="true"
+                     fileName="${LOG_PATH}/all.log"
+                     filePattern="${LOG_PATH}/%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1024MB"/>
+            </Policies>
+            <!-- 最多保存50个文件 -->
+            <DefaultRolloverStrategy max="50"/>
+        </RollingFile>
+        <RollingFile name="extra_appender" immediateFlush="true"
+                     fileName="${LOG_EXTRA_PATH}/all.log"
+                     filePattern="${LOG_EXTRA_PATH}/%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1024MB"/>
+            </Policies>
+            <!-- 最多保存50个文件 -->
+            <DefaultRolloverStrategy max="50"/>
+        </RollingFile>
+    </appenders>
+
+    <loggers>
+        <root level="info">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="application_appender"/>
+        </root>
+    </loggers>
+</Configuration>  
