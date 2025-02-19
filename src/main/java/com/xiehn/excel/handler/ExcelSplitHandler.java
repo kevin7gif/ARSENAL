@@ -1,7 +1,7 @@
 package com.xiehn.excel.handler;
 
 import com.alibaba.excel.EasyExcel;
-import com.xiehn.excel.listener.*;
+import com.xiehn.excel.listener.ExcelSplitListener;
 import com.xiehn.excel.model.ExcelData;
 import org.apache.commons.lang3.time.StopWatch;
 
@@ -53,7 +53,7 @@ public class ExcelSplitHandler {
                     try {
                         // 读取第i个sheet页
                         // 采用easyExcel的流式读取的方式读取文件
-                        EasyExcel.read(filePath, ExcelData.class, new ExcelListener(finalI, targetPath)).sheet(finalI).headRowNumber(0).doRead();
+                        EasyExcel.read(filePath, ExcelData.class, new ExcelSplitListener(finalI, targetPath)).sheet(finalI).headRowNumber(0).doRead();
                     } catch (Exception e) {
                         System.out.println("处理第 " + finalI + " 个sheet时出错：" + e.getMessage());
                     }

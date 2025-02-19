@@ -2,7 +2,6 @@ package com.xiehn.excel.handler;
 
 import com.alibaba.excel.EasyExcel;
 import com.xiehn.excel.listener.ExcelRowCountsListener;
-import com.xiehn.excel.model.ExcelData;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,9 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;

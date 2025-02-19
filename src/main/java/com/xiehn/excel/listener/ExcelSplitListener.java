@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ExcelListener extends AnalysisEventListener<ExcelData> {
+public class ExcelSplitListener extends AnalysisEventListener<ExcelData> {
     // 定义每个小excel的行数大小
     private static final int BATCH_COUNT = 3000;
     // 定义存放缓冲数据的集合
@@ -20,7 +20,7 @@ public class ExcelListener extends AnalysisEventListener<ExcelData> {
     // 定义计时器，用来指定生成的文件名
     private final AtomicInteger count = new AtomicInteger(1);
 
-    public ExcelListener(int sheetIndex, String targetPath) {
+    public ExcelSplitListener(int sheetIndex, String targetPath) {
         this.targetPath = targetPath;
         this.sheetIndex = sheetIndex;
     }
